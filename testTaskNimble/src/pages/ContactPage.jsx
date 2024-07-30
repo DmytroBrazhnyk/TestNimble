@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useGetContactByIdQuery } from '../features/api/apiSlice';
+import { useAddTagsToContactMutation } from '../features/api/apiSlice';
 import { CircularProgress, Typography, Card, Avatar, Stack, Container, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
+import AddTags from '../components/AddTags/AddTags';
 import TagsList from '../components/ContactCard/TagList';
 
 const formatContact = (contactData) => {
@@ -19,7 +21,21 @@ const formatContact = (contactData) => {
 export default function ContactPage() {
     const { id } = useParams();
     const { data, error, isLoading } = useGetContactByIdQuery(id);
+    const [addTagsToContact] = useAddTagsToContactMutation();
     const [contact, setContact] = useState(null);
+
+    const handleTagsSubmit = (newTags) => {
+        console.log(newTags);
+        addTagsToContact({ id, tags: newTags })
+            .unwrap()
+            .then(() => {
+                // Handle successful tag addition, e.g., show a success message
+            })
+            .catch((error) => {
+                console.error('Failed to add tags:', error);
+            });
+    };
+
 
     useEffect(() => {
         if (data) {
@@ -55,7 +71,7 @@ export default function ContactPage() {
                 {/* Третій блок */}
                 <Grid item xs={12}>
                     <Card sx={{ padding: 2 }}>
-                        <Typography variant="body2" color="textSecondary">Майбутній компонент</Typography>
+                        <AddTags onTagsSubmit={handleTagsSubmit}></AddTags>
                     </Card>
                 </Grid>
             </Grid>

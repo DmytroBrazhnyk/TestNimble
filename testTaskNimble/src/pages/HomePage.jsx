@@ -1,11 +1,12 @@
 
 import ContactsList from '../components/ContactsList/ContactsList';
+import CreateContact from '../components/CreateContact/CreateContact';
 
 export default function HomePage() {
 
     return (
         <div>
-        <h1>Home Page</h1>
+        <CreateContact></CreateContact>
         <ContactsList></ContactsList>
         </div>
     );

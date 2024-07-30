@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useGetContactsQuery } from "../../features/api/apiSlice";
 import { useDeleteContactMutation } from '../../features/api/apiSlice';
 import { CircularProgress, Container, Grid, Typography, Card, CardContent } from '@mui/material';
-import { Link } from 'react-router-dom';
 import ContactCard from '../ContactCard/ContactCard';
 
 export default function ContactsList(){
@@ -48,7 +47,6 @@ export default function ContactsList(){
             <Grid container spacing={2} direction="column">
                 {contacts.map(contact => (
                 <Grid item xs={12} sm={6} md={4} key={contact.id}>
-                    <Link to={`/contact/${contact.id}`} style={{ textDecoration: 'none' }}>
                         <ContactCard
                         avatar={contact.avatar}
                         tags={contact.tags}
@@ -56,8 +54,8 @@ export default function ContactsList(){
                         lastName={contact.lastName}
                         email={contact.email}
                         onDelete={() => handleDelete(contact.id)}
+                        id={contact.id}
                         />
-                    </Link>
                 </Grid>
                 ))}
             </Grid>
