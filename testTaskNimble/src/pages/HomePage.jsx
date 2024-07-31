@@ -1,15 +1,9 @@
 
-import React, { useState } from 'react';
 import { Grid, Box } from '@mui/material';
 import ContactsList from '../components/ContactsList/ContactsList';
 import CreateContact from '../components/CreateContact/CreateContact';
 
 export default function HomePage() {
-    const [refresh, setRefresh] = useState(false);
-
-    const handleRefresh = () => {
-        setRefresh(prev => !prev);
-    };
 
     return (
         <Box 
@@ -23,10 +17,10 @@ export default function HomePage() {
         >
             <Grid container spacing={2} direction={{ xs: 'column', md: 'row' }} alignItems="stretch">
                 <Grid item xs={12} md={4}>
-                    <CreateContact onContactCreated={handleRefresh} />
+                    <CreateContact/>
                 </Grid>
                 <Grid item xs={12} md={8}>
-                    <ContactsList refresh={refresh} />
+                    <ContactsList/>
                 </Grid>
             </Grid>
         </Box>

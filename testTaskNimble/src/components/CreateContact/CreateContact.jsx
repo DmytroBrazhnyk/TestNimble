@@ -2,7 +2,7 @@ import { useCreateContactMutation } from "../../features/api/apiSlice"
 import { useState } from 'react';
 import { TextField, Button, Card, Container, Stack, Typography} from '@mui/material';
 
-export default function CreateContact({onContactCreated}){
+export default function CreateContact(){
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -39,7 +39,6 @@ export default function CreateContact({onContactCreated}){
         setFirstName('');
         setLastName('');
         setEmail('');
-        onContactCreated();
     };
     return (
         <Container sx={{ position: 'sticky', top: 0 }}>

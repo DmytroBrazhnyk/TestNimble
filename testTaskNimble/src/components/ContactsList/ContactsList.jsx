@@ -4,7 +4,8 @@ import { useDeleteContactMutation } from '../../features/api/apiSlice';
 import { CircularProgress, Container, Grid, Typography, Card, CardContent } from '@mui/material';
 import ContactCard from '../ContactCard/ContactCard';
 
-export default function ContactsList({refresh}){
+export default function ContactsList(){
+
     const { data, error, isLoading } = useGetContactsQuery();
     const [deleteContact] = useDeleteContactMutation();
     const [contacts, setContacts] = useState([]);

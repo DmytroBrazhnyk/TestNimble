@@ -5,7 +5,7 @@ import './App.scss';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/TestNimble">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact/:id" element={<ContactPage />} />

@@ -6,6 +6,10 @@ const baseQuery = fetchBaseQuery({
         headers.set('Authorization', 'Bearer VlP9cwH6cc7Kg2LsNPXpAvF6QNmgZn');
         return headers;
     },
+    // fetchFn: (url, options) => {
+    //     console.log('Fetching:', url, options);
+    //     return fetch(url, options);
+    // },
 });
 
 export const apiSlice = createApi({
