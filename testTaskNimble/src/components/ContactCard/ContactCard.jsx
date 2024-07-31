@@ -7,7 +7,7 @@ export default function ContactCard({ id, avatar, tags, firstName, lastName, ema
     const navigate = useNavigate();
 
     const handleDelete = (e) => {
-        e.stopPropagation();  // Prevent navigation to the contact detail page
+        e.stopPropagation();
         onDelete(id);
     };
 
