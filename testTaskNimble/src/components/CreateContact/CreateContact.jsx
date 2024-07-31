@@ -1,12 +1,13 @@
 import { useCreateContactMutation } from "../../features/api/apiSlice"
 import { useState } from 'react';
-import { TextField, Button, Card, Container, Stack, Typography } from '@mui/material';
+import { TextField, Button, Card, Container, Stack, Typography} from '@mui/material';
 
-export default function CreateContact(){
+export default function CreateContact({onContactCreated}){
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [createContact] = useCreateContactMutation();
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +39,7 @@ export default function CreateContact(){
         setFirstName('');
         setLastName('');
         setEmail('');
+        onContactCreated();
     };
     return (
         <Container sx={{ position: 'sticky', top: 0 }}>
